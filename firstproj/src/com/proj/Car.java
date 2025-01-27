@@ -9,7 +9,7 @@ public class Car {
     private String color;
 
     public Car(String name, int speed, String color){
-
+        //
         this.name = name;
         this.speed = speed;
         this.color = color;
@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void setCar(String name, int speed, String color) {
-
+        //
         this.name = name;
         this.speed = speed;
         this.color = color;
@@ -48,16 +48,16 @@ public class Car {
         return color;
     }
 
-
+//
 
     @Override
     public String toString(){
         return "Марка: " + name + " \nМаксимальная скорость: " + speed + "\nЦвет: " + color +"\n";
     }
 
-
-
-
-
-
+//
+//
+//
+//
+//
 }
