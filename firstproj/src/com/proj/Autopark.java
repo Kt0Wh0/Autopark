@@ -1,14 +1,13 @@
 package com.proj;
 
-// TODO: я тебе здесь убрал все пустые строчки, код смотрится лаконичнее. Не оставляй нахуй пустые строчки там, где это не надо.
-// TODO: у тебя методы на две строчки кода и ты въебываешь еще две пустые. Если файл будет на 100 функций, то заебешься листать
 public class Autopark {
 
-    // TODO: память под массив должна выделяться при создании объекта. У тебя может вообще не будет вызван этот класс, а зачем тогда выделяем память под массив? В конструктор перенеси
-    // TODO: тебе идея не подсказывает на []? Массив объявялется Car[] cars вот так бро
-    private Car cars[] = new Car[2];
+    private Car[] cars;
 
-    // TODO: работать будет, но лучше использовать цикл while, break оператор - не лучший тон
+    public Autopark() {
+        cars = new Car[2];
+    }
+
     public Car[] addNewCar(String name, int speed, String color) {
         for (int i = 0; i < cars.length; i++) {
             if(cars[i] == null) {
@@ -22,7 +21,6 @@ public class Autopark {
         }
         return cars;
     }
-
 
     public void checkPark() {
         for (int i = 0; i < cars.length; i++) {
@@ -46,18 +44,6 @@ public class Autopark {
     public void updateCar (int id, String name, int speed, String color) {
         cars[id - 1].setCar(name, speed, color);
         System.out.println("Авто заменен");
-
-    }
-
-    // TODO: это чо такое?
-    public void parkCarsss(int id) {
-
-        int i = 0;
-        while (i < cars.length) {
-
-
-
-        }
 
     }
 }
