@@ -16,6 +16,13 @@ public class Cycle {
 
     }
 
+    public void setCycle(int weightCycle, int maxWeight, String color){
+        this.weightCycle = weightCycle;
+        this.maxWeight = maxWeight;
+        this.color = color;
+    }
+
+
     @Override
     public String toString(){
         return "Вес велосипеда: " + weightCycle + " \nМаксимально допустимый вес: " + maxWeight + "\nЦвет: " + color;

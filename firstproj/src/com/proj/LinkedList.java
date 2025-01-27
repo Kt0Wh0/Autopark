@@ -7,16 +7,21 @@ public class LinkedList {
     public LinkedList() {
 
         head = null;
+
+
     }
 
-    private class Node {
+
+    public class Node {
 
         Cycle data;
-        Node next;   // не совсем понимаю как работает такой тип данных. он как бы принимает тип данных данного класса или как?
+        int id;
+        Node next;
 
 
-        public Node(Cycle data) {
+        public Node(int id, Cycle data) {
 
+            this.id = id;
             this.data = data;
             next = null;
 
@@ -27,50 +32,59 @@ public class LinkedList {
 
     public void add(Cycle data) {
 
-        Node newNode = new Node(data);
-        Node current = head;
+        Node newNode = new Node(0, data);
 
         if (head == null) {
 
             head = newNode;
+            head.id = 1;
 
         } else {
-            //то что выше, ну если head = нул понятно(хотя про сам head было бы славно подробнее узнать)
-            //то что ниже, опишу как понял. мы пробегаемся, по всем объекта(?) если следующий не равен нулю то меняет текущий на следующий
-            //дальше мы просто следующему объекту присваиваем необходимое значение
-            //так же я не совсем понял про next, это по сути просто метод? но если это просто метод то зачем мы ему даем тип данных Node(если я правильно понял что это)
+
+            Node current = head;
+            int maxId = head.id;
+
             while (current.next != null) {
 
                 current = current.next;
+                maxId = Math.max(maxId, current.id);
 
             }
 
             current.next = newNode;
+            newNode.id = maxId + 1;
+
         }
+
     }
 
-    public void delete(Cycle data) {
+    public void delete(int id) {
 
         Node current = head;
         Node previous = null;
 
         while (current.next != null) {
 
-            if (current.data == data) {
+            if (current.id == id) {
 
                 if (current == head) {
-
+                    System.out.println("Привет1");
                     head = current.next;
 
                 } else {
-
+                    System.out.println("Привет2");
                     previous.next = current.next;
 
                 }
             }
-
+            System.out.println("Не смогли удалить");
             previous = current;
             current = current.next;
+        }
+        if (current.id == id) {
+
+            previous.next = null;
+
         }
 
     }
@@ -81,13 +95,32 @@ public class LinkedList {
 
 
         if (head != null) {
-            System.out.println("СУЧКА");
+            System.out.println("ID: " + head.id);
             System.out.println(head.data);
         }
 
         while (current.next != null) {
             current = current.next;
-            System.out.println(current.data);
+            System.out.println("ID: "+ current.id + "\n" + current.data);
+        }
+
+    }
+
+    public void update(int id, Cycle data) {
+        Node current = head;
+
+        while (current.next != null) {
+
+            if (current.id == id) {
+                current.data = data;
+            }
+
+            current = current.next;
+
+        }
+
+        if (current.id == id) {
+            current.data = data;
         }
 
     }
